@@ -110,11 +110,8 @@ const startServer = async () => {
         app.listen(port, () => console.log('Server started on port 8080'));
     } catch (error) {
         console.log(error);
-
     }
 }
 
 startServer();
-
-module.exports = app;
 
