@@ -12,11 +12,11 @@ The Jobs API is a tool that provides users with up-to-date information on the la
 # Endpoints
 To get list of all the jobs use the following endpoint - 
 ```
- http://localhost:5000/jobs/all
+ https://jobs-api-qmzj.onrender.com/jobs/all
 ```
 To get list of all the jobs by category, use the following endpoint where <:cat> is replaced by the category of your choice.  
 ```
-http://localhost:5000/jobs/<:cat>
+https://jobs-api-qmzj.onrender.com/jobs/<:cat>
 ```
 Here are current list of categories -
 
@@ -36,7 +36,7 @@ You can make a GET request to the endpoint to retrieve a list of all or category
     const axios  =  require('axios');
     const config  = {
 	    method: 'get',
-	    url: 'http://localhost:5000/jobs/all',
+	    url: 'https://jobs-api-qmzj.onrender.com/jobs/all',
 	    headers: {
 		    'x-api-key': YOUR_API_KEY,
 		    'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ You can make a GET request to the endpoint to retrieve a list of all or category
 
 ## Curl
 
-    curl --location 'http://localhost:5000/jobs/all' 
+    curl --location 'https://jobs-api-qmzj.onrender.com/jobs/all' 
     --header 'x-api-key: YOUR_API_KEY' 
     --header 'Content-Type: application/json'
 ##  JavaScript - Fetch
@@ -64,7 +64,7 @@ You can make a GET request to the endpoint to retrieve a list of all or category
 	    headers: myHeaders,
 	    redirect: 'follow'
 	};
-	fetch("http://localhost:5000/jobs/all", requestOptions)
+	fetch("https://jobs-api-qmzj.onrender.com/jobs/all", requestOptions)
 	.then(response  =>  response.text())
 	.then(result  =>  console.log(result))
 	.catch(error  =>  console.log('error', error));
@@ -72,7 +72,7 @@ You can make a GET request to the endpoint to retrieve a list of all or category
 
     import requests
     import json
-    url = "http://localhost:5000/jobs/all"
+    url = "https://jobs-api-qmzj.onrender.com/jobs/all"
     headers = {
 	    'x-api-key': YOUR_API_KEY,
 	    'Content-Type': 'application/json'
