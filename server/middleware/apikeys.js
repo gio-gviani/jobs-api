@@ -1,5 +1,5 @@
 const MAX = 25;
-    const UserSchema = require("../mongdodb/models/user");
+const UserSchema = require("../mongdodb/models/user");
 
 const genKey = () => {
     //create a base-36 string that is always 30 chars long a-z0-9 - 'an0qrr5i9u0q4km27hv2hue3ywx3uu'

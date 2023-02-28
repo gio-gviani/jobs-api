@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const cron = require('node-cron');
+const getData = require("./mongdodb/getDatabaseJobs");
 const connectDB = require('./mongdodb/connect');
 const API = require("./middleware/apikeys")
 const fetchMainPage = require('./fetchBody')
@@ -26,24 +27,50 @@ let law = []
 let medicine = []
 let security = []
 
-fetchJobs(url, jobs); // initializing the function on startup
-fetchJobs(`${url}?cid=6`, techJobs);
-fetchJobs(`${url}?cid=1`, management);
-fetchJobs(`${url}?cid=3`, finance);
-fetchJobs(`${url}?cid=5`, logistics);
-fetchJobs(`${url}?cid=11`, construction); // construction repari 11
-fetchJobs(`${url}?cid=7`, law); // law 7
 
-cron.schedule('0 0 * * *', () => { // function reruns every day
-    fetchJobs(url, jobs); 
-    // fetchJobs(`${url}?cid=8`, medicine); // medicine 8 
-    fetchJobs(`${url}?cid=6`, techJobs);
-    fetchJobs(`${url}?cid=1`, management);
-    fetchJobs(`${url}?cid=3`, finance);
-    fetchJobs(`${url}?cid=5`, logistics);
-    fetchJobs(`${url}?cid=11`, construction); // construction repari 11
-    fetchJobs(`${url}?cid=7`, law); // law 7
-});
+// scrape data function to get the data from the webpage - not working atm
+
+const scrapeData = async () => {
+    jobs = await fetchJobs(url, jobs, "all");
+    techJobs = await fetchJobs(`${url}?cid=6`, techJobs, "tech");
+    management = await fetchJobs(`${url}?cid=1`, management, "management");
+    finance = await fetchJobs(`${url}?cid=3`, finance, "finance");
+    logistics = await fetchJobs(`${url}?cid=5`, logistics, "logistics");
+    construction = await fetchJobs(`${url}?cid=11`, construction, "construction"); // construction repari 11
+    law = await fetchJobs(`${url}?cid=7`, law, "law"); // law 7
+} 
+
+// end
+ 
+const getDataFromDatabase = async () => {
+    jobs = await getData("all");
+    techJobs = await getData("tech");
+    management = await getData("management");
+    finance = await getData("finance");
+    logistics = await getData("logistics");
+    construction = await getData("construction");
+    law = await getData("law");
+}
+
+getDataFromDatabase()
+
+
+// Cron schedule to fetch new data every day - soon to be implemented
+
+// cron.schedule('0 0 * * *', () => { // function reruns every day
+//     fetchJobs(url, jobs); 
+//     // fetchJobs(`${url}?cid=8`, medicine); // medicine 8 
+//     fetchJobs(`${url}?cid=6`, techJobs);
+//     fetchJobs(`${url}?cid=1`, management);
+//     fetchJobs(`${url}?cid=3`, finance);
+//     fetchJobs(`${url}?cid=5`, logistics);
+//     fetchJobs(`${url}?cid=11`, construction); // construction repari 11
+//     fetchJobs(`${url}?cid=7`, law); // law 7
+// });
+
+// end
+
+// Rest of the data fetching - Soon to be implemented 
 
 // fetchJobs(`${url}?cid=17`, security); // security safety 17
 // fetchJobs(`${url}?cid=2`, techJobs); // sales procurement 2
@@ -58,13 +85,13 @@ cron.schedule('0 0 * * *', () => { // function reruns every day
 // fetchJobs(`${url}?cid=17`, security); // security safety 17
 // fetchJobs(`${url}?cid=8`, medicine); // medicine 8 
 
+// End 
+
 app.get('/', (req, res) => {
     res.status(200).send({ data: { message: 'Everything works fine.' } });
 });
 
 app.post("/jobs/register", async (req, res) => {
-    console.log(req);
-    
     let email = req.body.email;
     let user = await API.createUser(email, req);
     res.status(201).send({success: true, data: user});

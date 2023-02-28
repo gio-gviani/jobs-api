@@ -1,7 +1,15 @@
 const axios = require('axios');
 const cheerio = require("cheerio");
+const all = require("./mongdodb/models/all");
+const tech = require("./mongdodb/models/tech");
+const management = require("./mongdodb/models/management");
+const law = require("./mongdodb/models/law");
+const finance = require("./mongdodb/models/finance");
+const logistics = require("./mongdodb/models/logistics");
+const construction = require("./mongdodb/models/construction");
 
-const fetchJobs = async (url, array) => {
+
+const fetchJobs = async (url, array, cat) => {
     try {
         const res = await axios.get(url, { timeout: 20000});   
         let $ = await cheerio.load(res.data);
@@ -44,6 +52,66 @@ const fetchJobs = async (url, array) => {
             array.push(data);
         })
         console.log(array)
+        let initializeArray;
+        switch(cat) {
+            case "tech":
+                initializeArray = async () => {
+                    const data = await tech.create({
+                        data: array
+                    })
+                    return data;
+                };
+                break;
+            case "all":
+                initializeArray = async () => {
+                    const data = await all.create({
+                        data: array
+                    })
+                    return data;
+                }
+                break;
+            case "management":
+                initializeArray = async () => {
+                    data = await management.create({
+                        data: array
+                    })
+                    return data;
+                }
+                break;
+            case "finance":
+                initializeArray = async () => {
+                    data = await finance.create({
+                        data: array
+                    })
+                    return data;
+                }
+                break;
+            case "logistics":
+                initializeArray = async () => {
+                    data = await logistics.create({
+                        data: array
+                    })
+                    return data;
+                }
+                break;
+            case "construction":
+                initializeArray = async () => {
+                    data = await construction.create({
+                        data: array
+                    })
+                    return data;
+                }
+                break;
+            case "law":
+                initializeArray = async () => {
+                    data = await law.create({
+                        data: array
+                    })
+                    return data;
+                }
+                break;
+        }
+        return initializeArray()
     } catch (error) {
         console.log(error);
     }
