@@ -1,5 +1,7 @@
 # Welcome to Jobs API!
 
+NOTE: IF YOU CANNOT CONNECT TO API, PLEASE GIVE IT A FEW TRIES BEFORE SENDING A COMPLAINT. THIS IS BECAUSE THE SERVER SLEEPS WHEN THERES NO ACTIVITY.
+
 The Jobs API is a tool that provides users with up-to-date information on the latest job vacancies posted on the Jobs.ge website. This API allows users to search for job vacancies based on a variety of job categories. With this API, users can easily access the most relevant and current job vacancies in Georgia, making it a valuable resource for job seekers, employers, and recruitment agencies. 
 
 # Data Properties
