@@ -15,7 +15,7 @@ const Register = () => {
             } else {
                 try {
                     const body = JSON.stringify(email)
-                    const response = await axios.post(" ", {
+                    const response = await axios.post("https://jobs-api-qmzj.onrender.com/jobs/register", {
                         email: email
                     });
                     setAPI(response.data.data.api_key);
