@@ -13,7 +13,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App h-[100%] flex flex-col justify-between" >
+      <div className="App h-[100%] flex flex-col justify-between max-w-[100%] sm:max-w-[80%] m-auto" >
         <Header />
         <Routes>
           <Route index path='/' element={<Hero />} />

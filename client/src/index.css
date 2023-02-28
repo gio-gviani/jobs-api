@@ -42,7 +42,6 @@ pre > code {
   overflow-x: auto;
   white-space: pre;
   border-radius: 3px;
-  font-size: 1.5rem;
 }
 
 code {
@@ -58,25 +57,8 @@ code {
   border-bottom: 1px solid hsla(0,0%,50%,.33);
 }
 
-.docs h1 {
-  font-size: 2.5rem;
-  margin: 2rem 0;
-}
-
-.docs h2 {
-  font-size: 1.75rem;
-  margin: 2rem 0;
-}
-
 .docs {
   margin: 2rem 0;
   padding: 0 1rem;
 }
 
-.docs p {
-  font-size: 1.5rem;
-}
-
-.docs li {
-  font-size: 1.5rem;
-}
