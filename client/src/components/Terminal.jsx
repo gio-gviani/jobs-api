@@ -3,13 +3,13 @@ import React from 'react';
 const Response = (props) => {
     return (
         <div className="Terminal">
-            <div className="terminal-window w-[35   0px] sm:h-[620px] sm:w-[500px]">
+            <div className="terminal-window w-[350px] sm:h-[620px] sm:w-[500px]">
                 <header>
                     <div className="button green"></div>
                     <div className="button yellow"></div>
                     <div className="button red"></div>
                 </header>
-                <div className="terminal h-[620px] w-[100%] overflow-x-auto sm:overflow-hidden">
+                <div className="terminal h-[620px] overflow-x-auto">
                     <div>
                         <pre className=''>
                             <h3>Response:</h3>
