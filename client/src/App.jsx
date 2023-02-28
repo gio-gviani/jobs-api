@@ -16,11 +16,11 @@ function App() {
       <div className="App h-[100%] flex flex-col justify-between" >
         <Header />
         <Routes>
-          <Route index path='/jobs-api/' element={<Hero />} />
-          <Route path="/jobs-api/register" element={<Register />} />
-          <Route path="/jobs-api/docs" element={<Docs />} />
-          <Route path="/jobs-api/examples" element={<Examples />} />
-          <Route path="/jobs-api/*" element={<Hero />} />
+          <Route index path='/' element={<Hero />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/docs" element={<Docs />} />
+          <Route path="/examples" element={<Examples />} />
+          <Route path="/*" element={<Hero />} />
         </Routes>
         <Footer />
         <Particles id="tsparticles"/>
