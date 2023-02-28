@@ -3,13 +3,13 @@ import React from 'react';
 const Response = (props) => {
     return (
         <div className="Terminal">
-            <div className="terminal-window">
+            <div className="terminal-window w-[35   0px] sm:h-[620px] sm:w-[500px]">
                 <header>
                     <div className="button green"></div>
                     <div className="button yellow"></div>
                     <div className="button red"></div>
                 </header>
-                <section className="terminal">
+                <div className="terminal h-[620px] w-[100%] overflow-x-auto sm:overflow-hidden">
                     <div>
                         <pre className=''>
                             <h3>Response:</h3>
@@ -20,7 +20,7 @@ const Response = (props) => {
                     <div className='type text-teal-200'>
                     <h1>&gt;</h1>
                     </div>
-                </section>
+                </div>
             </div>
         </div>
     )
@@ -29,14 +29,14 @@ const Response = (props) => {
 const Request = (props) => {
     return (
         <div className="Terminal mb-10 2xl:mb-0 xl:mr-10">
-            <div className="terminal-window ">
+            <div className="terminal-window w-[350px] sm:h-[620px] sm:w-[500px]">
                 <header>
                     <div className="button green"></div>
                     <div className="button yellow"></div>
                     <div className="button red"></div>
                 </header>
-                <section className="terminal">
-                    <code>
+                <div className="terminal h-[620px] overflow-x-auto">
+                    <code className=''>
                         <div>
                             <h3>Request:</h3>
                             <span className='text-teal-200'>&gt; </span>
@@ -64,7 +64,7 @@ const Request = (props) => {
                     <div className='type text-teal-200'>
                     <h1>&gt;</h1>
                     </div>
-                </section>
+                </div>
             </div>
         </div>
     )

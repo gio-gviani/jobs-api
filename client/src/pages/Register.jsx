@@ -56,8 +56,8 @@ const Register = () => {
                 ) : (
                     <form className="shadow-md backdrop-blur-md w-fit m-auto xl:mb-[8rem] xl:mt-[4rem]">
                         <div className="">
-                            <input className="bg-transparent border-[4px] border-solid border-teal-200 p-3 text-white text-[1.5rem] focus:outline-0 focus:ring-0" placeholder="Enter your Email here: " type="email" name="email" value={email} onChange={(e) => setEmail(e.currentTarget.value)}pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" required/>
-                            <input className="bg-teal-200 cursor-pointer text-[1.5rem] p-4 text-black font-bold" type="submit" value="Submit" id="submit" onClick={handleSubmit}/>
+                            <input className="bg-transparent border-[4px] border-solid border-teal-200 p-3 text-white text-[1rem] sm:text-[1.5rem] focus:outline-0 focus:ring-0" placeholder="Enter your Email here: " type="email" name="email" value={email} onChange={(e) => setEmail(e.currentTarget.value)}pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" required/>
+                            <input className="bg-teal-200 cursor-pointer text-[1rem] sm:text-[1.5rem] p-4 text-black font-bold my-4 sm:my-0" type="submit" value="Submit" id="submit" onClick={handleSubmit}/>
                         </div>
                     </form>
                 )
