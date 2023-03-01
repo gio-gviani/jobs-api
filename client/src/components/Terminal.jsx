@@ -40,7 +40,7 @@ const Request = (props) => {
                         <div>
                             <h3>Request:</h3>
                             <span className='text-teal-200'>&gt; </span>
-                            fetch&#40;"http://localhost:5000/jobs/{props.cat}", &#123;
+                            fetch&#40;" https://jobs-api-qmzj.onrender.com/jobs/{props.cat}", &#123;
                         </div>
                         <div>
                             &nbsp; &nbsp; method: "GET", 

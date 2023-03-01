@@ -14,10 +14,10 @@ const Docs = () => (
             </ul>
             <h1 className="text-white text-start leading-[1.33] text-[1.5rem] md:text-[2rem] my-[2rem]">Endpoints</h1>
             <p className="my-[1.2em] sm:text-[1.5rem]">To get list of all the jobs use the following endpoint -</p>
-            <pre><code className="text-[0.8rem] sm:text-[1.5rem]"> http://localhost:5000/jobs/all
+            <pre><code className="text-[0.8rem] sm:text-[1.5rem]">  https://jobs-api-qmzj.onrender.com/jobs/all
             </code></pre>
             <p className="my-[1.2em] sm:text-[1.5rem]">To get list of all the jobs by category, use the following endpoint where &lt;:cat&gt; is replaced by the category of your choice.</p>
-            <pre className="text-[0.8rem] sm:text-[1.5rem]"><code> http://localhost:5000/jobs/&lt;:cat&gt;
+            <pre className="text-[0.8rem] sm:text-[1.5rem]"><code>  https://jobs-api-qmzj.onrender.com/jobs/&lt;:cat&gt;
             </code></pre>
             <p className="my-[1.2em] sm:text-[1.5rem]">Here are current list of categories -</p>
             <ul className="my-[1.2em] list-disc pl-[2.5em]">
@@ -34,7 +34,7 @@ const Docs = () => (
             <pre><code className="text-[0.8rem] sm:text-[1.5rem]">{`const axios  =  require('axios');
 const config  = {
 method: 'get',
-url: 'http://localhost:5000/jobs/all',
+url: ' https://jobs-api-qmzj.onrender.com/jobs/all',
 headers: {
     'x-api-key': YOUR_API_KEY,
     'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ console.log(error);
 });
             `}</code></pre>
             <h2 className="my-[2rem] text-[1rem] sm:text-[1.75rem]">Curl</h2>
-            <pre><code className="text-[0.8rem] sm:text-[1.5rem]">curl --location 'http://localhost:5000/jobs/all' 
+            <pre><code className="text-[0.8rem] sm:text-[1.5rem]">curl --location ' https://jobs-api-qmzj.onrender.com/jobs/all' 
             --header 'x-api-key: YOUR_API_KEY' 
             --header 'Content-Type: application/json'
             </code></pre>
@@ -60,7 +60,7 @@ const requestOptions  = {
     headers: myHeaders,
     redirect: 'follow'
 };
-fetch("http://localhost:5000/jobs/all", requestOptions)
+fetch(" https://jobs-api-qmzj.onrender.com/jobs/all", requestOptions)
 .then(response;  response.text())
 .then(result;  console.log(result))
 .catch(error;  console.log('error', error));
@@ -68,7 +68,7 @@ fetch("http://localhost:5000/jobs/all", requestOptions)
             <h2 className="my-[2rem] text-[1rem] sm:text-[1.75rem]">Python - Requests</h2>
             <pre><code className="text-[0.8rem] sm:text-[1.5rem]">{`import requests
 import json
-url = "http://localhost:5000/jobs/all"
+url = " https://jobs-api-qmzj.onrender.com/all"
 headers = {
     'x-api-key': YOUR_API_KEY,
     'Content-Type': 'application/json'
