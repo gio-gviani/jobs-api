@@ -7,11 +7,10 @@ const fetchMainPage = async (href) => {
         const $bodyPage = cheerio.load(bodyPage.data);
         let data;
         $bodyPage(
-            "#job > table > tbody > tr > td:nth-child(1) > table.dtable > tbody > tr:nth-child(4)"     
+            "#job > table > tbody > tr > td:nth-child(1) > table.dtable > tbody > tr:nth-child(4)"
         ).each((ind, ele) => {
             data = $bodyPage(ele).text().replace(/\s+/g, " ").trim();
         })
-        console.log(data)
         return data;
     } catch (error) {
         console.log(error)
