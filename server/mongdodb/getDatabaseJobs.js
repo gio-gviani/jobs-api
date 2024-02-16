@@ -11,25 +11,25 @@ const getJobByCat = async (cat) => {
         let initializeArray;
         switch (cat) {
             case "tech":
-                initializeArray = await tech.find({});
+                initializeArray = await tech.findOne({});
                 return initializeArray;
             case "all":
-                initializeArray = await all.find({});
+                initializeArray = await all.findOne({});
                 return initializeArray;
             case "management":
-                initializeArray = await management.find({});
+                initializeArray = await management.findOne({});
                 return initializeArray;
             case "finance":
-                initializeArray = await finance.find({});
+                initializeArray = await finance.findOne({});
                 return initializeArray;
             case "logistics":
-                initializeArray = await logistics.find({});
+                initializeArray = await logistics.findOne({});
                 return initializeArray;
             case "construction":
-                initializeArray = await construction.find({});
+                initializeArray = await construction.findOne({});
                 return initializeArray;
             case "law":
-                initializeArray = await law.find({});
+                initializeArray = await law.findOne({});
                 return initializeArray;
         }
         return initializeArray;
