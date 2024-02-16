@@ -4,8 +4,8 @@ const UserSchema = require("../mongdodb/models/user");
 const genKey = () => {
     //create a base-36 string that is always 30 chars long a-z0-9 - 'an0qrr5i9u0q4km27hv2hue3ywx3uu'
     return [...Array(30)]
-      .map((e) => ((Math.random() * 36) | 0).toString(36))
-      .join('');
+        .map((e) => ((Math.random() * 36) | 0).toString(36))
+        .join('');
 };
 
 const createUser = async (_email, req) => {
@@ -17,7 +17,6 @@ const createUser = async (_email, req) => {
         host: req.headers.host,
         usage: [{ date: today, count: 0 }],
     });
-    console.log(newUser)
     return newUser;
 };
 
@@ -37,10 +36,10 @@ const validateKey = async (req, res, next) => {
             if (account.usage[usageIndex].count >= MAX) {
                 //stop and respond
                 res.status(429).send({
-                error: {
-                    code: 429,
-                    message: 'Max API calls exceeded.',
-                },
+                    error: {
+                        code: 429,
+                        message: 'Max API calls exceeded.',
+                    },
                 });
             } else {
                 //have not hit todays max usage
@@ -57,6 +56,6 @@ const validateKey = async (req, res, next) => {
         //stop and respond
         res.status(403).send({ error: { code: 403, message: 'You not allowed.' } });
     }
-    };
+};
 
 module.exports = { createUser, validateKey };
