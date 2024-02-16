@@ -2,14 +2,14 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const cron = require('node-cron');
-const getData = require("./mongdodb/getDatabaseJobs");
+const getData = require("./mongdodb/getDatabaseJobs").getJobByCat;
 const connectDB = require('./mongdodb/connect');
 const API = require("./middleware/apikeys")
 const fetchMainPage = require('./fetchBody')
 const fetchJobs = require("./fetchJobs")
 const port = process.env.PORT || 5000;
 const url = 'https://jobs.ge/en/';
-const deleteCollections = require("./mongdodb/getDatabaseJobs");
+const deleteCollections = require("./mongdodb/getDatabaseJobs").deleteCollections;
 
 const app = express();
 app.use(express.json());
@@ -21,6 +21,7 @@ app.use(cors(
 
 // scrape data function to get the data from the webpage - not working atm
 const scrapeData = async () => {
+    deleteCollections();
     await fetchJobs(url, "all");
     console.log("\u001b[1;32m finished all fetch")
     await fetchJobs(`${url}?cid=6`, "tech");
@@ -39,8 +40,8 @@ const scrapeData = async () => {
 }
 
 // Cron schedule to fetch new data every month
-cron.schedule('0 0 1 * *', () => {
-    deleteCollections();
+cron.schedule('0 0 1 * *', async () => {
+    const result = await deleteCollections();
     scrapeData();
 });
 
@@ -68,8 +69,7 @@ app.post("/register", async (req, res) => {
 
 app.get("/:cat", API.validateKey, async (req, res) => {
     const cat = req.params.cat;
-    let data = { request: "success", data: "no data found or no category." };
-    data = await getData(cat);
+    data = await getData(cat) || { request: "success", data: "no data found or no category." };
     res.status(200).send(JSON.stringify(data));
 })
 
@@ -81,6 +81,7 @@ const startServer = async () => {
     try {
         connectDB(process.env.MONGODB_URL);
         app.listen(port, () => console.log('Server started on port 8080'));
+        scrapeData();
     } catch (error) {
         console.log(error);
     }
