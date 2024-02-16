@@ -6,43 +6,50 @@ const finance = require("./models/finance");
 const logistics = require("./models/logistics");
 const construction = require("./models/construction");
 
-const getData = async (cat) => {
+const getJobByCat = async (cat) => {
     try {
         let initializeArray;
-        switch(cat) {
+        switch (cat) {
             case "tech":
-                initializeArray = await tech.find({}); 
+                initializeArray = await tech.find({});
                 return initializeArray;
-                break;
             case "all":
-                initializeArray = await all.find({}); 
+                initializeArray = await all.find({});
                 return initializeArray;
-                break;
             case "management":
-                initializeArray = await management.find({}); 
+                initializeArray = await management.find({});
                 return initializeArray;
-                break;
             case "finance":
-                initializeArray = await finance.find({}); 
+                initializeArray = await finance.find({});
                 return initializeArray;
-                break;
             case "logistics":
-                initializeArray = await logistics.find({}); 
+                initializeArray = await logistics.find({});
                 return initializeArray;
-                break;
             case "construction":
-                initializeArray = await construction.find({}); 
+                initializeArray = await construction.find({});
                 return initializeArray;
-                break;
             case "law":
-                initializeArray = await law.find({}); 
+                initializeArray = await law.find({});
                 return initializeArray;
-                break;
         }
-        return initializeArray()
-    } catch(error) {
+        return initializeArray;
+    } catch (error) {
         console.log(error)
     }
 }
 
-module.exports = getData;
+const deleteCollections = async () => {
+    try {
+        await all.deleteMany({});
+        await tech.deleteMany({});
+        await management.deleteMany({});
+        await law.deleteMany({});
+        await finance.deleteMany({});
+        await logistics.deleteMany({});
+        await construction.deleteMany({});
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = getJobByCat, deleteCollections;
