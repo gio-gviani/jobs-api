@@ -49,7 +49,9 @@ const deleteCollections = async () => {
         await construction.deleteMany({});
     } catch (error) {
         console.log(error)
+    } finally {
+        console.log("Ended deleting collections.")
     }
 }
 
-module.exports = getJobByCat, deleteCollections;
+module.exports = { getJobByCat, deleteCollections };

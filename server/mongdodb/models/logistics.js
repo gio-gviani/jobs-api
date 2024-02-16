@@ -1,12 +1,7 @@
 const mongoose = require("mongoose")
 
 const logistics = new mongoose.Schema({
-    title: String,
-    company: String,
-    posted: String,
-    expires: String,
-    body: String,
-    companyImage: String
+    data: Array
 })
 
 const logisticsSchema = mongoose.model('logistics', logistics);

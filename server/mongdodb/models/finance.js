@@ -1,12 +1,7 @@
 const mongoose = require("mongoose")
 
 const finance = new mongoose.Schema({
-    title: String,
-    company: String,
-    posted: String,
-    expires: String,
-    body: String,
-    companyImage: String
+    data: Array
 })
 
 const financeSchema = mongoose.model('finance', finance);
