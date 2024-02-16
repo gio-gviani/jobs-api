@@ -60,13 +60,13 @@ app.get('/', (req, res) => {
     res.status(200).send({ data: { message: 'Everything works fine.' } });
 });
 
-app.post("/jobs/register", async (req, res) => {
+app.post("/register", async (req, res) => {
     let email = req.body.email;
     let user = await API.createUser(email, req);
     res.status(201).send({ success: true, data: user });
 })
 
-app.get("/jobs/:cat", API.validateKey, async (req, res) => {
+app.get("/:cat", API.validateKey, async (req, res) => {
     const cat = req.params.cat;
     let data = { request: "success", data: "no data found or no category." };
     data = await getData(cat);
