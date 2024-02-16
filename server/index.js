@@ -35,6 +35,7 @@ const scrapeData = async () => {
     console.log("\u001b[1;32m finished construction fetch")
     fetchJobs(`${url}?cid=7`, "law"); // law 7
     console.log("\u001b[1;32m finished law fetch")
+
 }
 
 // Cron schedule to fetch new data every month
@@ -43,7 +44,6 @@ cron.schedule('0 0 1 * *', () => {
     scrapeData();
 });
 
-// fetchJobs(`${url}?cid=17`, security); // security safety 17
 // fetchJobs(`${url}?cid=2`, techJobs); // sales procurement 2
 // fetchJobs(`${url}?cid=4`, techJobs); // pr marketing 4
 // fetchJobs(`${url}?cid=18`, techJobs); // general technical staff 18
