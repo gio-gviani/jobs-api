@@ -21,7 +21,7 @@ app.use(cors(
 
 // scrape data function to get the data from the webpage - not working atm
 const scrapeData = async () => {
-    deleteCollections();
+    await deleteCollections();
     await fetchJobs(url, "all");
     console.log("\u001b[1;32m finished all fetch")
     await fetchJobs(`${url}?cid=6`, "tech");
@@ -81,6 +81,7 @@ const startServer = async () => {
     try {
         connectDB(process.env.MONGODB_URL);
         app.listen(port, () => console.log('Server started on port 8080'));
+        scrapeData();
     } catch (error) {
         console.log(error);
     }
