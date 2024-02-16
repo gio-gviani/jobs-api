@@ -52,66 +52,43 @@ const fetchJobs = async (url, cat) => {
             // data["body"] = await fetchMainPage(href); // is not working atm 
             array.push(data);
         })
-        let initializeArray;
         switch (cat) {
             case "tech":
-                initializeArray = async () => {
-                    const data = await tech.create({
-                        data: array
-                    })
-                    return data;
-                };
+                await tech.create({
+                    "data": array
+                })
                 break;
             case "all":
-                initializeArray = async () => {
-                    const data = await all.create({
-                        data: array
-                    })
-                    return data;
-                }
+                await all.create({
+                    "data": array
+                })
                 break;
             case "management":
-                initializeArray = async () => {
-                    data = await management.create({
-                        data: array
-                    })
-                    return data;
-                }
+                await management.create({
+                    "data": array
+                })
                 break;
             case "finance":
-                initializeArray = async () => {
-                    data = await finance.create({
-                        data: array
-                    })
-                    return data;
-                }
+                await finance.create({
+                    "data": array
+                })
                 break;
             case "logistics":
-                initializeArray = async () => {
-                    data = await logistics.create({
-                        data: array
-                    })
-                    return data;
-                }
+                await logistics.create({
+                    "data": array
+                })
                 break;
             case "construction":
-                initializeArray = async () => {
-                    data = await construction.create({
-                        data: array
-                    })
-                    return data;
-                }
+                await construction.create({
+                    "data": array
+                })
                 break;
             case "law":
-                initializeArray = async () => {
-                    data = await law.create({
-                        data: array
-                    })
-                    return data;
-                }
+                await law.create({
+                    "data": array
+                })
                 break;
         }
-        return initializeArray;
     } catch (error) {
         console.log(error);
     }
