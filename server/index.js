@@ -42,7 +42,7 @@ const scrapeData = async () => {
 // Cron schedule to fetch new data every month
 cron.schedule('0 0 1 * *', async () => {
     const result = await deleteCollections();
-    scrapeData();
+    const data = await scrapeData();
 });
 
 // fetchJobs(`${url}?cid=2`, techJobs); // sales procurement 2
