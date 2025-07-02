@@ -67,13 +67,13 @@ app.post("/register", async (req, res) => {
     res.status(201).send({ success: true, data: user });
 })
 
-app.get("/:cat", API.validateKey, async (req, res) => {
+app.get("/:cat", async (req, res) => {
     const cat = req.params.cat;
     data = await getData(cat) || { request: "success", data: "no data found or no category." };
     res.status(200).send(JSON.stringify(data));
 })
 
-app.get('*', API.validateKey, (req, res) => {
+app.get('*', (req, res) => {
     res.send({ error: "No routes found" });
 })
 
